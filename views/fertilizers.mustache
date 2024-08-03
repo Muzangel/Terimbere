@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizer Predictions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .form-container {
+            width: 350px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 25px;
+            background-color: #33af41;
+            color: black;
+        }
+        .header-title {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .result-container {
+            width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 25px;
+            background-color: #e9ecef;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <h1>Terimbere</h1>
+            <nav class="nav justify-content-center">
+                <a class="nav-link text-white" href="/home">Home</a>
+                <a class="nav-link text-white" href="/about">About</a>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Services
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="servicesDropdown">
+                        <a class="dropdown-item" href="/market">Market</a>
+                        <a class="dropdown-item" href="/botanists">Botanists</a>
+                        <a class="dropdown-item" href="/predictions">Predictions</a>
+                    </div>
+                </div>
+                <a class="nav-link text-white" href="/login">Login</a>
+                <a class="nav-link text-white" href="/signup">Signup</a>
+            </nav>
+        </div>
+    </header>
+
+    <br /><br />
+    <h2 style="text-align: center; margin: 0px; color: black; font-size: 1.21rem">
+        <b>Get informed advice on fertilizer based on soil</b>
+    </h2>
+    <br />
+
+    <div class="form-container">
+        <form id="predictionForm">
+            <div class="form-group">
+                <label for="Nitrogen" style="font-size: 17px"><b>Nitrogen</b></label>
+                <input type="number" class="form-control" id="Nitrogen" name="nitrogen" placeholder="Enter the value (example:50)" style="font-weight: bold" required />
+            </div>
+            <div class="form-group">
+                <label for="Phosphorous" style="font-size: 17px"><b>Phosphorous</b></label>
+                <input type="number" class="form-control" id="Phosphorous" name="phosphorous" placeholder="Enter the value (example:50)" style="font-weight: bold" required />
+            </div>
+            <div class="form-group">
+                <label for="potassium" style="font-size: 17px"><b>Potassium</b></label>
+                <input type="number" class="form-control" id="potassium" name="potassium" required>
+            </div>
+            <div class="form-group">
+                <label for="crop" style="font-size: 17px"><b>Crop you want to grow</b></label>
+                <select name="cropname" class="form-control" id="crop" placeholder="Select a crop" style="font-weight: bold" required>
+                    <option selected>Select crop</option>
+                    <option>rice</option>
+                    <option>maize</option>
+                    <option>chickpea</option>
+                    <option>kidneybeans</option>
+                    <option>pigeonpeas</option>
+                    <option>mothbeans</option>
+                    <option>mungbean</option>
+                    <option>blackgram</option>
+                    <option>lentil</option>
+                    <option>pomegranate</option>
+                    <option>banana</option>
+                    <option>mango</option>
+                    <option>grapes</option>
+                    <option>watermelon</option>
+                    <option>muskmelon</option>
+                    <option>apple</option>
+                    <option>orange</option>
+                    <option>papaya</option>
+                    <option>coconut</option>
+                    <option>cotton</option>
+                    <option>jute</option>
+                    <option>coffee</option>
+                </select>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-info" style="background-color: blue; color: white; font-weight: bold; width: 130px; height: 50px; border-radius: 12px; font-size: 21px;">
+                    Predict
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="result-container" id="resultContainer" style="display: none;">
+        <h3>Prediction Result</h3>
+        <p id="result"></p>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2024 Terimbere. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.querySelector('.dropdown-toggle').addEventListener('click', function(event) {
+            event.preventDefault();
+            var dropdownMenu = this.nextElementSibling;
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+document.getElementById('predictionForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var formData = new FormData(this);
+    var data = {
+        nitrogen: parseFloat(formData.get('nitrogen')),
+        phosphorous: parseFloat(formData.get('phosphorous')),
+        potassium: parseFloat(formData.get('potassium')),
+        cropname: formData.get('cropname')
+    };
+
+    fetch('/fertilizers', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert('Error: ' + data.error);
+        } else {
+            document.getElementById('result').innerHTML = data.recommendation;
+            document.getElementById('resultContainer').style.display = 'block';
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error.message);
+    });
+});
+
+    </script>
+</body>
+</html>

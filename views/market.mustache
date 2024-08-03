@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terimbere</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #cart-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #28a745;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            min-width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <h1>Terimbere</h1>
+            <nav class="nav justify-content-center">
+                <a class="nav-link text-white" href="/home">Home</a>
+                <a class="nav-link text-white" href="/about">About</a>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Services
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="servicesDropdown">
+                        <a class="dropdown-item" href="/market">Market</a>
+                        <a class="dropdown-item" href="/botanists">Botanists</a>
+                        <a class="dropdown-item" href="/predictions">Predictions</a>
+                    </div>
+                </div>
+                <a class="nav-link text-white" href="/login">Login</a>
+                <a class="nav-link text-white" href="/signup">Signup</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="jumbotron text-center bg-success text-white">
+        <div class="container">
+            <h1 class="jumbotron-heading">Welcome to Our Food Marketplace</h1>
+            <p class="lead">Delicious food products available for purchase</p>
+            <a href="#products" class="btn btn-primary my-2">Browse Products</a>
+            <a href="/home#contact-form" class="btn btn-light my-2">Contact Us</a>
+        </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section id="products" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Products</h2>
+            <div class="row" id="market-products">
+                <!-- Products will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Cart Icon -->
+    <div id="cart-icon" data-toggle="modal" data-target="#cartModal">
+        🛒
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul id="cart-items" class="list-group mb-3"></ul>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>Total: Rwf <span id="cart-total">0.00</span></span>
+                        <button type="button" class="btn btn-success" id="checkout">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
+        <div class="toast-header">
+            <strong class="mr-auto">Success</strong>
+            <small class="text-muted">Just now</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Product added to cart!
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Terimbere. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+
+    document.querySelector('.dropdown-toggle').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default action
+            var dropdownMenu = this.nextElementSibling;
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+    
+    const cart = [];
+
+    function loadMarketProducts() {
+        fetch('/api/products')
+            .then(response => response.json())
+            .then(products => {
+                const marketProducts = document.getElementById('market-products');
+                marketProducts.innerHTML = '';
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'col-md-4';
+                    productCard.innerHTML = `
+                        <div class="card mb-4 shadow-sm">
+                            <img src="/uploads/${product.image}" class="card-img-top product-image" alt="${product.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text">${product.description}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">Rwf ${product.price.toFixed(2)}</span>
+                                    <button type="button" class="btn btn-sm btn-outline-success add-to-cart" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    marketProducts.appendChild(productCard);
+                });
+                addCartEventListeners();
+            })
+            .catch(error => console.error('Error fetching products:', error));
+    }
+
+    function addCartEventListeners() {
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const name = this.getAttribute('data-name');
+                const price = parseFloat(this.getAttribute('data-price'));
+                addToCart(name, price);
+            });
+        });
+    }
+
+    function addToCart(name, price) {
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({ name, price, quantity: 1 });
+        }
+        renderCart();
+        showToast();
+    }
+
+    function removeFromCart(name) {
+        const itemIndex = cart.findIndex(item => item.name === name);
+        if (itemIndex > -1) {
+            cart.splice(itemIndex, 1);
+        }
+        renderCart();
+    }
+
+    function updateQuantity(name, quantity) {
+        const item = cart.find(item => item.name === name);
+        if (item) {
+            item.quantity = parseInt(quantity);
+            if (item.quantity <= 0) {
+                removeFromCart(name);
+            }
+        }
+        renderCart();
+    }
+
+    function renderCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+            listItem.innerHTML = `
+                ${item.name} - Rwf ${item.price.toFixed(2)} x ${item.quantity} = Rwf ${itemTotal.toFixed(2)}
+                <div>
+                    <button class="btn btn-sm btn-danger" onclick="removeFromCart('${item.name}')">Remove</button>
+                    <input type="number" class="form-control form-control-sm d-inline-block ml-2" style="width: 60px;" value="${item.quantity}" min="1" onchange="updateQuantity('${item.name}', this.value)">
+                </div>
+            `;
+            cartItemsContainer.appendChild(listItem);
+        });
+
+        document.getElementById('cart-total').innerText = total.toFixed(2);
+    }
+
+    function showToast() {
+        $('.toast').toast('show');
+    }
+
+    document.getElementById('checkout').addEventListener('click', function() {
+        alert('Checkout functionality not implemented.');
+    });
+
+    // Load market products on page load
+    document.addEventListener('DOMContentLoaded', loadMarketProducts);
+</script>
+
+</body>
+</html>
+
+

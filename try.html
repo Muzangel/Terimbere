@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Dashboard - Terimbere</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .navbar-custom {
+            position: relative;
+            z-index: 1030; /* Higher z-index to ensure it is in front */
+        }
+        .sidebar {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            top: 100px; /* Adjusted to start after the nav */
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+            z-index: 1020; /* Lower z-index than the navbar */
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #575d63;
+        }
+        .main {
+            margin-left: 200px;
+            padding: 20px;
+        }
+        .chat-box {
+            height: 200px; /* Reduced height */
+            overflow-y: scroll;
+            border: 1px solid #cccccc;
+            padding: 10px;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-3 navbar-custom">
+        <div class="container">
+            <h1>Terimbere</h1>
+            <nav class="nav justify-content-center">
+                <a class="nav-link text-white" href="/home">Home</a>
+                <a class="nav-link text-white" href="/about">About</a>
+                <a class="nav-link text-white" href="/market">Market</a>
+                <a class="nav-link text-white" href="/login">Login</a>
+                <a class="nav-link text-white" href="/signup">Signup</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <a href="#farmers-list" class="sidebar-link"><i class="fas fa-user-friends"></i> Farmers</a>
+        <a href="#investment-opportunities" class="sidebar-link"><i class="fas fa-chart-line"></i> Investment Opportunities</a>
+        <a href="#impact-metrics" class="sidebar-link"><i class="fas fa-chart-pie"></i> Impact Metrics</a>
+        <a href="#market-insights" class="sidebar-link"><i class="fas fa-globe"></i> Market Insights</a>
+        <a href="#settings" class="sidebar-link"><i class="fas fa-cog"></i> Settings</a>
+    </div>
+
+    <section id="investorDash" class="py-5">
+
+        <div class="main">
+
+            <section id="farmers-list" class="content-section">
+                <h3>List of Farmers</h3>
+                <div class="row">
+                    <!-- Farmer 1 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card farmer-card" data-farmer="john">
+                            <div class="card-body">
+                                <h5 class="card-title">Yohani Kamushi</h5>
+                                <p class="card-text">Yohani is an experienced farmer specializing in organic vegetables and fruits.</p>
+                                <p class="card-text"><small class="text-muted">Location: Kigali, Rwanda</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Farmer 2 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card farmer-card" data-farmer="jane">
+                            <div class="card-body">
+                                <h5 class="card-title">Jane Uwineza</h5>
+                                <p class="card-text">Jane focuses on dairy farming and has a herd of over 100 cows.</p>
+                                <p class="card-text"><small class="text-muted">Location: Butare, Rwanda</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more farmers as needed -->
+                </div>
+
+                <div id="chat">
+                    <h3>Chat</h3>
+                    <div class="card">
+                        <div class="card-header">
+                            Chat with Farmers
+                        </div>
+                        <div class="card-body">
+                            <div id="chat-box" class="chat-box">
+                                <!-- Chat messages will appear here -->
+                                <p class="text-center">Select a farmer to view chat history</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <form id="chat-form">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Type a message" required>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">Send</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="investment-opportunities" class="content-section">
+                <h3>Investment Opportunities</h3>
+                <p>Listings of farmers seeking loans or investments, along with risk assessments and projected returns.</p>
+                <!-- Add content for investment opportunities here -->
+            </section>
+
+            <section id="impact-metrics" class="content-section">
+                <h3>Impact Metrics</h3>
+                <p>Tracking and reporting tools to measure the social and economic impact of their investments on farmers' livelihoods.</p>
+                <!-- Add content for impact metrics here -->
+            </section>
+
+            <section id="market-insights" class="content-section">
+                <h3>Market Insights</h3>
+                <p>Aggregated data on market trends, crop prices, and regional performance to inform investment decisions.</p>
+                <!-- Add content for market insights here -->
+            </section>
+
+            <section id="settings" class="content-section">
+                <h3>Settings</h3>
+                <p>Configure your account settings and preferences.</p>
+                <!-- Add content for settings here -->
+            </section>
+        </div>
+
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Terimbere. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const farmers = {
+                john: [
+                    { sender: 'Yohani Kamushi', message: 'How can I improve my crop yield?' },
+                    { sender: 'You', message: 'You should consider using organic fertilizers.' }
+                ],
+                jane: [
+                    { sender: 'Jane Uwineza', message: 'What are the best practices for dairy farming?' },
+                    { sender: 'You', message: 'Ensure regular veterinary checkups and proper feeding.' }
+                ]
+            };
+
+            const chatBox = document.getElementById('chat-box');
+            const chatForm = document.getElementById('chat-form');
+            let currentFarmer = null;
+
+            document.querySelectorAll('.farmer-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const farmerId = this.getAttribute('data-farmer');
+                    currentFarmer = farmerId;
+                    loadChat(farmerId);
+                });
+            });
+
+            chatForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (!currentFarmer) {
+                    alert('Please select a farmer to chat with.');
+                    return;
+                }
+
+                const messageInput = this.querySelector('input');
+                const message = messageInput.value.trim();
+                if (message) {
+                    farmers[currentFarmer].push({ sender: 'You', message });
+                    loadChat(currentFarmer);
+                    messageInput.value = '';
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }
+            });
+
+            function loadChat(farmerId) {
+                chatBox.innerHTML = '';
+                const chatHistory = farmers[farmerId] || [];
+                chatHistory.forEach(chat => {
+                    const messageElement = document.createElement('div');
+                    messageElement.classList.add('message', 'mb-2');
+                    messageElement.innerHTML = `<strong>${chat.sender}:</strong> ${chat.message}`;
+                    if (chat.sender === 'You') {
+                        messageElement.classList.add('text-right');
+                    }
+                    chatBox.appendChild(messageElement);
+                });
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelectorAll('.content-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

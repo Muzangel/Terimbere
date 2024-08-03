@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../assets/img/apple-icon.png"
+    />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <title>Investor Dashboard</title>
+
+    <link rel="stylesheet" href="/investor.css" />
+    <style>
+      .rectangle {
+        width: calc(100% - 40px);
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin: 20px;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .table-container {
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-family: "Arial", sans-serif;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+      .form-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        font-family: "Arial", sans-serif;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 10px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .btn-success {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .btn-success:hover {
+        background-color: #45a049;
+      }
+      .btn {
+        display: inline-block;
+        margin-top: 10px;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .btn-primary:hover {
+        background-color: #0056b3;
+      }
+      .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .btn-danger:hover {
+        background-color: #c82333;
+      }
+    </style>
+  </head>
+
+  <body class="g-sidenav-show bg-gray-100">
+    <div class="min-height-300 bg-primary position-absolute w-100"></div>
+    <aside
+      class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4"
+      id="sidenav-main"
+    >
+      <div class="sidenav-header">
+        <i
+          class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+          aria-hidden="true"
+          id="iconSidenav"
+        ></i>
+        <a class="navbar-brand m-0" href="#" target="_blank">
+          <span class="ms-1 font-weight-bold">Investor Dashboard</span>
+        </a>
+      </div>
+      <hr class="horizontal dark mt-0" />
+      <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="/investorDash">
+              <span class="nav-link-text ms-1">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/farmersList">
+              <span class="nav-link-text ms-1">Farmers</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/investmentopp">
+              <span class="nav-link-text ms-1">Investment Opportunities</span>
+            </a>
+          </li>
+          <li class="nav-item mt-3">
+            <h6
+              class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"
+            >
+              Account page
+            </h6>
+          </li>
+          {{! <li class="nav-item">
+            <a class="nav-link" href="/profile">
+              <span class="nav-link-text ms-1">Profile</span>
+            </a>
+          </li> }}
+          <li class="nav-item">
+            <a class="nav-link" href="/chat">
+              <span class="nav-link-text ms-1">Chat</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main-content position-relative border-radius-lg">
+      <!-- Navbar -->
+      <nav
+        class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+        id="navbarBlur"
+        data-scroll="false"
+      >
+        <div class="container-fluid py-1 px-3">
+          <nav aria-label="breadcrumb">
+            <h5 class="font-weight-bolder text-white mb-0">TERIMBERE</h5>
+          </nav>
+          <div
+            class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
+            id="navbar"
+          >
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
+            <ul class="navbar-nav justify-content-end">
+              <li class="nav-item d-flex align-items-center">
+                <a
+                  href="/signout"
+                  class="nav-link text-white font-weight-bold px-0"
+                >
+                  <i class="fa fa-user me-sm-1"></i>
+                  <span class="d-sm-inline d-none">Sign Out</span>
+                </a>
+              </li>
+              <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                <a
+                  href="javascript:;"
+                  class="nav-link text-white p-0"
+                  id="iconNavbarSidenav"
+                >
+                  <div class="sidenav-toggler-inner">
+                    <i class="sidenav-toggler-line bg-white"></i>
+                    <i class="sidenav-toggler-line bg-white"></i>
+                    <i class="sidenav-toggler-line bg-white"></i>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+
+      <!-- Rectangle Section -->
+      <div class="rectangle">
+        <h3>Investment Opportunities</h3>
+        <div class="table-container">
+          <table id="opportunitiesTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Date Posted</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Opportunities will be dynamically inserted here -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="form-container">
+          <h4>Add New Opportunity</h4>
+          <div class="form-group">
+            <label for="opportunityName">Opportunity Name</label>
+            <input
+              type="text"
+              id="opportunityName"
+              placeholder="Opportunity Name"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="opportunityDescription">Opportunity Description</label>
+            <textarea
+              id="opportunityDescription"
+              placeholder="Opportunity Description"
+              class="form-control"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="opportunityDate">Date Posted</label>
+            <input type="date" id="opportunityDate" class="form-control" />
+          </div>
+          <button id="addOpportunity" class="btn btn-success">
+            Add Opportunity
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Core JS Files -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Function to fetch and render opportunities
+        function fetchOpportunities() {
+          $.get("/api/opportunities", function (data) {
+            const tableBody = $("#opportunitiesTable tbody");
+            tableBody.empty();
+            data.forEach((opportunity) => {
+              const row = `
+              <tr data-id="${opportunity._id}">
+                <td><input type="text" value="${opportunity.name}" class="form-control name"></td>
+                <td><textarea class="form-control description">${opportunity.description}</textarea></td>
+                <td><input type="date" value="${opportunity.datePosted}" class="form-control datePosted"></td>
+                <td>
+                  <button class="btn btn-primary btn-sm edit">Edit</button>
+                  <button class="btn btn-danger btn-sm delete">Delete</button>
+                </td>
+              </tr>
+            `;
+              tableBody.append(row);
+            });
+          });
+        }
+
+        // Function to add a new opportunity
+        $("#addOpportunity").click(function () {
+          const newOpportunity = {
+            name: $("#opportunityName").val(),
+            description: $("#opportunityDescription").val(),
+            datePosted: $("#opportunityDate").val(),
+          };
+
+          $.post("/api/opportunities", newOpportunity, function (data) {
+            fetchOpportunities();
+            $("#opportunityName").val("");
+            $("#opportunityDescription").val("");
+            $("#opportunityDate").val("");
+          });
+        });
+
+        // Function to edit an opportunity
+        $(document).on("click", ".edit", function () {
+          const row = $(this).closest("tr");
+          const id = row.data("id");
+          const updatedOpportunity = {
+            name: row.find(".name").val(),
+            description: row.find(".description").val(),
+            datePosted: row.find(".datePosted").val(),
+          };
+
+          $.ajax({
+            url: `/api/opportunities/${id}`,
+            type: "PUT",
+            data: JSON.stringify(updatedOpportunity),
+            contentType: "application/json",
+            success: function (data) {
+              fetchOpportunities();
+            },
+            error: function (error) {
+              console.error("Error updating opportunity:", error);
+              alert("Failed to update opportunity.");
+            },
+          });
+        });
+
+        // Function to delete an opportunity
+        $(document).on("click", ".delete", function () {
+          const row = $(this).closest("tr");
+          const id = row.data("id");
+
+          $.ajax({
+            url: `/api/opportunities/${id}`,
+            type: "DELETE",
+            success: function (data) {
+              fetchOpportunities();
+            },
+            error: function (error) {
+              console.error("Error deleting opportunity:", error);
+              alert("Failed to delete opportunity.");
+            },
+          });
+        });
+
+        // Initial fetch of opportunities
+        fetchOpportunities();
+      });
+    </script>
+  </body>
+</html>

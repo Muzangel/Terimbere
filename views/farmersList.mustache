@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Investor Dashboard</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/investor.css">
+  <style>
+    .notification {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #4caf50;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body class="g-sidenav-show bg-gray-100">
+  <div class="notification" id="notification">Successfully connected</div>
+  <div class="min-height-300 bg-primary position-absolute w-100"></div>
+  <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4" id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href="https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html" target="_blank">
+        <span class="ms-1 font-weight-bold">Investor Dashboard</span>
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/investorDash">
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/farmersList">
+            <span class="nav-link-text ms-1">Farmers</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./investmentopp">
+            <span class="nav-link-text ms-1">Investment Opportunities</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+        </li>
+        {{! <li class="nav-item">
+          <a class="nav-link" href="/profile">
+            <span class="nav-link-text ms-1">Profile</span>
+          </a>
+        </li> }}
+        <li class="nav-item">
+          <a class="nav-link" href="./chat">
+            <span class="nav-link-text ms-1">Chat</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content position-relative border-radius-lg">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <h5 class="font-weight-bolder text-white mb-0">TERIMBERE</h5>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
+          <ul class="navbar-nav justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <a href="/signout" class="nav-link text-white font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">Sign Out</span>
+              </a>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Farmers</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone Number</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Plant</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="farmers-table-body">
+                    <!-- Dynamic Content Here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch('/api/users')
+        .then(response => response.json())
+        .then(users => {
+          const tableBody = document.getElementById('farmers-table-body');
+          users.forEach(farmer => {
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+              <td>
+                <h6 class="mb-0 text-sm">${farmer.name}</h6>
+              </td>
+              <td>
+                <p class="text-xs text-secondary mb-0">${farmer.phone}</p>
+              </td>
+              <td>
+                <p class="text-xs text-secondary mb-0">${farmer.plants}</p>
+              </td>
+              <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold">${farmer.location}</span>
+              </td>
+              <td class="align-middle">
+                <button class="btn btn-primary btn-sm connect-btn" data-phone="${farmer.phone}">Connect</button>
+              </td>
+            `;
+
+            tableBody.appendChild(row);
+          });
+
+          document.querySelectorAll('.connect-btn').forEach(button => {
+            button.addEventListener('click', function() {
+              const farmerPhone = this.getAttribute('data-phone');
+              fetch(`/api/connect/${farmerPhone}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                  if (data.success) {
+                    showNotification('Successfully connected');
+                    addChatUser(data.farmer);
+                  } else {
+                    showNotification('Failed to connect', 'error');
+                  }
+                })
+                .catch(error => console.error('Error connecting:', error));
+            });
+          });
+        })
+        .catch(error => console.error('Error fetching farmers:', error));
+    });
+
+    function showNotification(message, type = 'success') {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.style.backgroundColor = type === 'success' ? '#4caf50' : '#f44336';
+      notification.style.display = 'block';
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 3000);
+    }
+
+    function addChatUser(user) {
+      const chatUsersList = document.getElementById('chat-users-list');
+      const userItem = `
+        <li class="clearfix chat-user-item" data-phone="${user.phone}">
+          <div class="about">
+            <div class="name">${user.name}</div>
+          </div>
+        </li>
+      `;
+      chatUsersList.insertAdjacentHTML('beforeend', userItem);
+
+      // Add click event listener to newly added user item
+      $('.chat-user-item').off('click').on('click', function() {
+        const userPhone = $(this).data('phone');
+        currentChatUserPhone = userPhone;
+        fetchChatHistory(userPhone);
+        $('#chat-with-name').text($(this).find('.name').text());
+      });
+    }
+  </script>
+</body>
+</html>

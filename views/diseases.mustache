@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Predictions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+        .form-container {
+            width: 350px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 25px;
+            background-color: #33af41;
+            color: black;
+        }
+        .form-container h2 {
+            font-size: 1.25rem;
+        }
+        .header-title {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .result-container {
+            width: 80%; /* Increased width */
+            max-width: 800px; /* Maximum width */
+            margin: 20px auto;
+            padding: 30px; /* Increased padding */
+            border-radius: 25px;
+            background-color: #e9ecef;
+            color: black;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Added shadow for prominence */
+        }
+        .result-container h3 {
+            font-size: 1.5rem; /* Larger title */
+            margin-bottom: 20px;
+        }
+        #result {
+            font-size: 1.1rem; /* Larger text */
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <h1>Terimbere</h1>
+            <nav class="nav justify-content-center">
+                <a class="nav-link text-white" href="/home">Home</a>
+                <a class="nav-link text-white" href="/about">About</a>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Services
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="servicesDropdown">
+                        <a class="dropdown-item" href="/market">Market</a>
+                        <a class="dropdown-item" href="/botanists">Botanists</a>
+                        <a class="dropdown-item" href="/predictions">Predictions</a>
+                    </div>
+                </div>
+                <a class="nav-link text-white" href="/login">Login</a>
+                <a class="nav-link text-white" href="/signup">Signup</a>
+            </nav>
+        </div>
+    </header>
+
+    <br /><br />
+    <h2 class="header-title text-center text-dark">
+        <b>Find out which disease has been caught by your plant</b>
+    </h2>
+
+    <div class="form-container">
+        <form id="imageForm" class="form-signin" method="post" enctype="multipart/form-data">
+            <h2 class="h4 mb-3 font-weight-normal"><b>Please Upload The Image</b></h2>
+            <input type="file" name="file" class="form-control-file" id="inputfile" onchange="preview_image(event)" style="font-weight: bold;" required>
+            <br><br>
+            <img id="output-image" class="rounded mx-auto d-block" />
+            <button class="btn btn-lg btn-primary btn-block" type="submit" style="font-weight: bold;">Predict</button>
+        </form>
+    </div>
+
+    <div id="resultContainer" class="result-container" style="display: none;">
+        <h3 class="text-center">Prediction Result</h3>
+        <h4 class="text-center" id="diseaseName"></h4>
+        <div id="result"></div>
+    </div>
+
+    <div class="result-container" id="errorContainer" style="display: none;">
+        <h3 class="text-center">Error</h3>
+        <p id="error"></p>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2024 Terimbere. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function preview_image(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('output-image');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        document.getElementById('imageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            var formData = new FormData(this);
+            
+            fetch('/diseases', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('diseaseName').textContent = data.disease_name;
+                document.getElementById('result').innerHTML = data.prediction;
+                document.getElementById('resultContainer').style.display = 'block';
+                document.getElementById('errorContainer').style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('error').textContent = 'An error occurred while processing the image.';
+                document.getElementById('errorContainer').style.display = 'block';
+                document.getElementById('resultContainer').style.display = 'none';
+            });
+        });
+
+        document.querySelector('.dropdown-toggle').addEventListener('click', function(event) {
+            event.preventDefault();
+            var dropdownMenu = this.nextElementSibling;
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+        
+    </script>
+</body>
+</html>

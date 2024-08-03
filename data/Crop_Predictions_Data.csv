@@ -1,0 +1,201 @@
+Province,District,Month,Soil_Type,Rainfall,Temperature,Crop
+Southern,Huye,October,Loamy,962,24.02,Sweet Potatoes
+Kigali,Nyarugenge,May,Clay,1967,28.73,Sweet Potatoes
+Kigali,Nyarugenge,February,Loamy,501,15,Maize
+Southern,Nyanza,April,Chalky,1174,25.0,Beans
+Northern,Gicumbi,September,Clay,679,23.7,Sweet Potatoes
+Northern,Burera,November,Loamy,1464,29.85,Soybeans
+Eastern,Nyagatare,June,Sandy,523,16.0,Beans
+Northern,Gakenke,October,Sandy,1603,15.25,Maize
+Eastern,Ngoma,January,Peaty,1472,29.55,Sweet Potatoes
+Kigali,Nyarugenge,September,Chalky,1744,17.59,Sweet Potatoes
+Northern,Gicumbi,August,Chalky,1773,16.59,Soybeans
+Western,Ngororero,November,Sandy,1023,25.46,Bananas
+Northern,Gicumbi,May,Silty,1398,29.73,Wheat
+Western,Karongi,March,Peaty,1310,27.33,Wheat
+Western,Rubavu,August,Silty,789,17.42,Bananas
+Kigali,Nyarugenge,August,Sandy,1486,17.81,Rice
+Southern,Huye,May,Chalky,1023,28.78,Cassava
+Kigali,Nyarugenge,December,Clay,1572,16.32,Sweet Potatoes
+Southern,Muhanga,September,Clay,733,27.8,Soybeans
+Eastern,Kayonza,December,Chalky,1644,20.75,Cassava
+Western,Karongi,January,Loamy,1435,25.38,Rice
+Northern,Musanze,November,Silty,1098,16.35,Bananas
+Northern,Rulindo,January,Silty,1707,19.59,Soybeans
+Eastern,Kirehe,December,Loamy,1187,25.8,Rice
+Northern,Burera,March,Silty,1270,20.17,Sweet Potatoes
+Western,Nyamasheke,July,Peaty,1468,25.17,Soybeans
+Northern,Gicumbi,December,Silty,1686,19.9,Soybeans
+Southern,Nyanza,December,Clay,977,15.26,Rice
+Eastern,Nyagatare,January,Chalky,925,21.41,Wheat
+Southern,Gisagara,October,Chalky,683,21.17,Beans
+Kigali,Gasabo,July,Clay,1848,26.85,Rice
+Northern,Gicumbi,November,Chalky,546,19.09,Cassava
+Western,Ngororero,April,Peaty,525,15.2,Sweet Potatoes
+Northern,Rulindo,November,Peaty,804,20.55,Cassava
+Southern,Gisagara,September,Silty,933,17.8,Wheat
+Southern,Gisagara,December,Sandy,1256,22.38,Soybeans
+Eastern,Kirehe,August,Sandy,1876,27.41,Beans
+Eastern,Bugesera,February,Silty,865,24.46,Beans
+Western,Rubavu,September,Sandy,1829,16.02,Soybeans
+Western,Ngororero,August,Loamy,1920,23.61,Cassava
+Kigali,Kicukiro,February,Loamy,1768,29.29,Bananas
+Northern,Rulindo,May,Clay,1456,22.05,Sweet Potatoes
+Western,Rutsiro,August,Sandy,1274,25.18,Soybeans
+Eastern,Nyagatare,October,Sandy,1003,26.28,Wheat
+Kigali,Gasabo,December,Sandy,773,23.87,Cassava
+Northern,Burera,September,Silty,753,29.8,Bananas
+Southern,Muhanga,July,Loamy,1745,19.41,Wheat
+Eastern,Bugesera,January,Loamy,1191,23.0,Soybeans
+Western,Karongi,September,Chalky,978,24.19,Beans
+Northern,Rulindo,December,Peaty,985,22.81,Beans
+Western,Karongi,May,Peaty,1331,25.9,Soybeans
+Eastern,Kirehe,August,Silty,1521,25.22,Wheat
+Western,Rutsiro,April,Peaty,886,27.16,Beans
+Western,Ngororero,May,Chalky,823,17.9,Wheat
+Kigali,Nyarugenge,January,Clay,1519,19.45,Cassava
+Northern,Rulindo,December,Clay,882,16.29,Maize
+Eastern,Ngoma,January,Peaty,603,25.63,Maize
+Southern,Huye,August,Loamy,1567,24.64,Soybeans
+Kigali,Gasabo,March,Silty,627,20.0,Soybeans
+Northern,Gicumbi,January,Silty,1821,22.31,Rice
+Northern,Gakenke,May,Peaty,1361,23.15,Maize
+Northern,Gakenke,July,Peaty,774,23.86,Wheat
+Western,Ngororero,May,Peaty,1695,29.51,Cassava
+Northern,Gicumbi,April,Silty,1011,26.61,Maize
+Kigali,Nyarugenge,August,Silty,1952,27.27,Maize
+Western,Nyamasheke,January,Loamy,1063,20.46,Maize
+Kigali,Kicukiro,November,Sandy,1153,16.89,Sweet Potatoes
+Eastern,Kirehe,August,Chalky,977,17.84,Soybeans
+Northern,Gakenke,May,Peaty,1056,16.95,Wheat
+Southern,Nyanza,August,Sandy,895,21.56,Bananas
+Kigali,Kicukiro,November,Sandy,1329,25.35,Wheat
+Kigali,Nyarugenge,August,Silty,1576,16.32,Wheat
+Kigali,Kicukiro,February,Loamy,983,17.23,Soybeans
+Western,Nyamasheke,August,Peaty,1197,26.54,Maize
+Northern,Gakenke,December,Chalky,1260,15.82,Wheat
+Western,Ngororero,May,Clay,1371,21.02,Sweet Potatoes
+Western,Karongi,March,Peaty,731,21.07,Wheat
+Eastern,Kirehe,March,Sandy,907,25.0,Beans
+Eastern,Kirehe,March,Silty,1281,29.01,Bananas
+Eastern,Nyagatare,May,Sandy,1688,26.98,Wheat
+Eastern,Nyagatare,February,Clay,1914,23.66,Sweet Potatoes
+Western,Nyamasheke,February,Clay,1770,16.53,Rice
+Eastern,Bugesera,November,Clay,1310,22.77,Beans
+Kigali,Gasabo,December,Sandy,1492,18.27,Cassava
+Northern,Musanze,April,Chalky,1881,25.89,Rice
+Northern,Gakenke,May,Sandy,1007,28.31,Sweet Potatoes
+Kigali,Gasabo,July,Silty,640,15.28,Rice
+Eastern,Ngoma,April,Loamy,1027,26.69,Rice
+Southern,Huye,September,Peaty,1322,29.79,Beans
+Western,Nyamasheke,May,Loamy,1639,26.35,Beans
+Kigali,Nyarugenge,November,Clay,1899,21.63,Wheat
+Eastern,Nyagatare,September,Sandy,656,28.94,Cassava
+Northern,Gakenke,April,Loamy,1389,16.82,Beans
+Southern,Nyaruguru,May,Silty,722,21.9,Maize
+Eastern,Ngoma,February,Clay,1303,18.48,Beans
+Southern,Muhanga,October,Loamy,1563,19.94,Maize
+Kigali,Gasabo,July,Peaty,709,27.97,Rice
+Eastern,Kirehe,June,Sandy,1929,24.27,Beans
+Northern,Musanze,August,Silty,965,15.15,Cassava
+Northern,Rulindo,September,Loamy,1556,17.57,Maize
+Kigali,Nyarugenge,November,Sandy,1047,20.76,Bananas
+Kigali,Nyarugenge,April,Clay,1211,27.88,Bananas
+Kigali,Nyarugenge,June,Silty,1472,26.82,Maize
+Kigali,Nyarugenge,October,Loamy,1781,18.32,Cassava
+Southern,Nyanza,May,Silty,1813,24.73,Bananas
+Eastern,Bugesera,March,Loamy,1499,17.33,Soybeans
+Western,Rutsiro,June,Clay,1697,21.08,Rice
+Kigali,Kicukiro,January,Loamy,1562,26.58,Sweet Potatoes
+Eastern,Ngoma,May,Silty,1695,16.61,Cassava
+Eastern,Nyagatare,May,Sandy,1095,28.74,Beans
+Southern,Gisagara,December,Sandy,663,28.17,Sweet Potatoes
+Eastern,Bugesera,October,Silty,561,23.4,Bananas
+Eastern,Ngoma,October,Clay,1436,21.78,Bananas
+Southern,Gisagara,November,Peaty,578,22.6,Sweet Potatoes
+Southern,Huye,May,Chalky,1731,26.56,Beans
+Western,Rubavu,February,Chalky,637,17.06,Sweet Potatoes
+Western,Nyamasheke,December,Clay,976,16.49,Cassava
+Northern,Musanze,June,Chalky,1549,18.68,Bananas
+Southern,Muhanga,January,Silty,1065,21.55,Cassava
+Northern,Musanze,September,Clay,1523,20.35,Soybeans
+Northern,Musanze,September,Loamy,1501,25.53,Soybeans
+Western,Ngororero,June,Peaty,1809,28.63,Beans
+Kigali,Kicukiro,June,Peaty,868,21.98,Beans
+Southern,Gisagara,February,Loamy,1415,18.85,Bananas
+Western,Karongi,July,Clay,1290,23.94,Bananas
+Eastern,Ngoma,September,Silty,849,20.96,Maize
+Kigali,Gasabo,June,Peaty,1133,15.92,Wheat
+Southern,Muhanga,November,Sandy,549,25.0,Beans
+Eastern,Kayonza,June,Silty,807,22.56,Cassava
+Kigali,Nyarugenge,May,Silty,1362,18.81,Sweet Potatoes
+Southern,Muhanga,January,Chalky,971,27.11,Bananas
+Eastern,Kayonza,April,Clay,1375,17.36,Rice
+Western,Nyamasheke,May,Clay,1491,22.29,Wheat
+Western,Karongi,August,Chalky,1177,27.06,Cassava
+Western,Nyamasheke,June,Silty,1367,26.8,Soybeans
+Western,Ngororero,February,Peaty,1579,22.03,Wheat
+Southern,Nyanza,October,Chalky,626,29.96,Beans
+Kigali,Nyarugenge,March,Loamy,674,28.95,Rice
+Northern,Gakenke,April,Chalky,708,29.68,Bananas
+Western,Karongi,December,Loamy,1430,26.03,Sweet Potatoes
+Northern,Burera,April,Loamy,1955,16.65,Soybeans
+Northern,Gicumbi,December,Clay,1420,24.57,Bananas
+Northern,Rulindo,April,Chalky,1913,29.68,Rice
+Kigali,Gasabo,May,Silty,1144,15.8,Rice
+Kigali,Nyarugenge,April,Loamy,1988,25.59,Rice
+Southern,Nyaruguru,June,Peaty,531,24.16,Bananas
+Northern,Musanze,October,Loamy,704,27.67,Beans
+Eastern,Bugesera,January,Chalky,723,21.33,Maize
+Southern,Muhanga,April,Chalky,1589,20.54,Sweet Potatoes
+Eastern,Kirehe,April,Silty,584,27.2,Beans
+Kigali,Kicukiro,May,Silty,709,16.85,Soybeans
+Eastern,Kayonza,September,Sandy,878,28.31,Rice
+Western,Nyamasheke,August,Silty,1428,22.15,Maize
+Kigali,Kicukiro,October,Sandy,1121,19.22,Soybeans
+Kigali,Gasabo,December,Silty,618,25.87,Sweet Potatoes
+Northern,Gicumbi,May,Clay,816,21.38,Soybeans
+Southern,Nyanza,May,Silty,1908,22.66,Bananas
+Southern,Nyanza,February,Silty,881,21.4,Maize
+Eastern,Kayonza,May,Sandy,677,17.25,Wheat
+Eastern,Bugesera,October,Clay,843,25.52,Soybeans
+Western,Ngororero,August,Loamy,594,18.23,Soybeans
+Southern,Huye,May,Clay,1777,16.45,Wheat
+Western,Karongi,September,Peaty,811,27.86,Wheat
+Western,Karongi,September,Chalky,1236,23.18,Soybeans
+Northern,Gicumbi,April,Silty,956,18.87,Soybeans
+Kigali,Nyarugenge,March,Chalky,1724,29.06,Beans
+Western,Rubavu,October,Chalky,996,17.98,Soybeans
+Kigali,Gasabo,October,Loamy,1070,29.69,Beans
+Northern,Gakenke,December,Chalky,1919,16.07,Cassava
+Eastern,Kayonza,April,Loamy,520,15.59,Wheat
+Western,Rubavu,July,Clay,691,18.88,Beans
+Eastern,Kirehe,January,Clay,1231,18.49,Beans
+Northern,Rulindo,September,Loamy,1751,16.43,Bananas
+Northern,Musanze,January,Loamy,648,22.23,Rice
+Kigali,Nyarugenge,April,Loamy,1306,15.57,Wheat
+Southern,Huye,October,Sandy,1147,20.32,Maize
+Northern,Burera,November,Silty,1790,21.95,Wheat
+Southern,Nyaruguru,May,Clay,1462,16.07,Wheat
+Eastern,Ngoma,June,Clay,1675,16.1,Sweet Potatoes
+Northern,Gakenke,November,Loamy,595,19.86,Sweet Potatoes
+Northern,Gicumbi,October,Sandy,1560,22.95,Beans
+Eastern,Kayonza,September,Loamy,1040,16.26,Bananas
+Kigali,Gasabo,October,Peaty,1296,26.03,Rice
+Eastern,Kayonza,September,Loamy,1919,19.49,Cassava
+Western,Rubavu,May,Clay,684,20.32,Sweet Potatoes
+Eastern,Bugesera,July,Chalky,1550,28.95,Cassava
+Western,Rubavu,March,Peaty,814,26.06,Wheat
+Eastern,Kayonza,May,Peaty,1890,20.85,Sweet Potatoes
+Southern,Huye,May,Silty,585,15.71,Wheat
+Southern,Gisagara,March,Silty,1758,28.22,Maize
+Southern,Huye,June,Chalky,726,26.45,Bananas
+Southern,Muhanga,January,Peaty,1108,21.95,Wheat
+Eastern,Bugesera,December,Clay,923,26.73,Soybeans
+Western,Rutsiro,September,Chalky,1785,17.18,Wheat
+Southern,Muhanga,June,Peaty,1749,20.73,Wheat
+Southern,Nyanza,July,Silty,1267,16.37,Wheat
+Northern,Burera,January,Loamy,1719,16.54,Cassava
+Kigali,Gasabo,December,Chalky,1124,28.97,Sweet Potatoes
+Southern,Nyaruguru,December,Clay,619,17.32,Sweet Potatoes
+Western,Rubavu,October,Loamy,1992,18.56,Wheat

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terimbere</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+   <style>
+    .profile-card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin: 20px;
+    }
+
+    .profile-card img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .profile-card .card-body {
+        padding: 20px;
+    }
+
+    .profile-card .card-title {
+        margin-bottom: 10px;
+    }
+
+    .profile-card .card-text {
+        margin-bottom: 15px;
+    }
+
+    .profile-card .contact-info {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .profile-card .contact-info li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .profile-card .contact-info li i {
+        margin-right: 10px;
+    }
+</style>
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <h1>Terimbere</h1>
+            <nav class="nav justify-content-center">
+                <a class="nav-link text-white" href="/home">Home</a>
+                <a class="nav-link text-white" href="/about">About</a>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Services
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="servicesDropdown">
+                        <a class="dropdown-item" href="/market">Market</a>
+                        <a class="dropdown-item" href="/botanists">Botanists</a>
+                        <a class="dropdown-item" href="/predictions">Predictions</a>
+                    </div>
+                </div>
+                <a class="nav-link text-white" href="/login">Login</a>
+                <a class="nav-link text-white" href="/signup">Signup</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="my-4 text-center">Meet Our Botanists</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="/images/1.png" alt="Botanist 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr. Kamuhigi Ernest</h5>
+                        <p class="card-text">Dr. Kamuhigi Ernest is a renowned botanist specializing in tropical plants. She has over 20 years of experience in the field and has published numerous research papers.</p>
+                        <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> (250) 786-72890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Rwangingo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="/images/2.png" alt="Botanist 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr. John Muhigi</h5>
+                        <p class="card-text">Dr. John Muhigi is an expert in desert flora. He has led several expeditions and contributed to the discovery of new plant species in arid regions.</p>
+                        <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> (250) 787-3210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Rwamagana</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="/images/3.png" alt="Botanist 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr. Emily Nyinawabo</h5>
+                        <p class="card-text">Dr. Emily Nyinawabo specializes in medicinal plants. Her research focuses on the therapeutic properties of various plant species and their applications in modern medicine.</p>
+                        <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> (250) 780-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kirehe</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Terimbere. All rights reserved.</p>
+    </footer>
+
+    <script> 
+        document.querySelector('.dropdown-toggle').addEventListener('click', function(event) {
+            event.preventDefault(); 
+            var dropdownMenu = this.nextElementSibling;
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
